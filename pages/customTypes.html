@@ -1,0 +1,44 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="../css/baseStyle.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icon.png">
+
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body onload="loadLists()">
+  <div class="form-container">
+    <form class="create-character-form">
+      <span class="title">Custom Types</span><hr>
+
+      <div class="header-card"><span class="header-text">Races</span></div>
+      <ul class="edit-list" id="race-list"></ul>
+
+      <div class="form-group">
+        <button id="save_button">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="../dist/customTypes.bundle.js" type="module"></script>
+</body>
+
+</html>

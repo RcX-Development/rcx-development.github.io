@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/baseStyle.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/frutiger.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body onload="initializeFirebase(); checkState()">
+  <div class="center-flex">
+    <div class="card">
+      <span class="title hover-text"> RcX Development Login </span><hr>
+      <form id="login-form">
+        <label for="email_input" class="hover-text">Email : </label>
+        <input type="text" id="email_input" class="simple-input">
+
+        <label for="password_input" class="hover-text">Password : </label>
+        <input type="text" id="password_input" class="simple-input">
+
+        <button type="submit" class="hover-button hover-text"> Login </button>
+
+        <div style="text-align: center; margin-top: 20px; display: none" id="login-status">
+          <span style="color: #c92e2e; font-weight: bold; font-size: .8em"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./dist/loginPage.bundle.js" type="module"></script>
+  <script src="./dist/app.bundle.js" type="module"></script>
+</body>
+
+</html>
