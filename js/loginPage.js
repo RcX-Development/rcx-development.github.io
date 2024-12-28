@@ -1,4 +1,4 @@
-import { auth, initializeFirebase, redirect } from "./app.js";
+import { auth, initializeFirebase } from "./app.js";
 import { signInWithEmailAndPassword, onAuthStateChanged  } from "firebase/auth";
 
 export function checkState() {
@@ -26,7 +26,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
   try {
     const userCred = await signInWithEmailAndPassword(auth, email.toString(), password.toString());
     onAuthStateChanged(auth, (user) => {
-      if (user) { redirect("pages/homepage.html"); }
+      if (user) { window.location.href = "pages/homepage.html"; }
       throw new Error("");
     });
   } catch (error) {

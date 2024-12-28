@@ -28,21 +28,16 @@ export async function initializeFirebase() {
   }
 }
 
-export function redirect(path) {
-  window.location.href = path;
-}
-
-export function checkAuth() {
-  // Use onAuthStateChanged to detect the user's login state
+export function checkAuth(servePath) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log("User is logged in:", user);
-    } else {
-      window.location.href = "../index.html?status=invalid-user";
+      if (servePath) { window.location.href = servePath; }
+      return;
     }
+
+    window.location.href = "../index.html?status=invalid-user";
   });
 }
 
 window.initializeFirebase = initializeFirebase;
-window.redirect = redirect;
 window.checkAuth = checkAuth;

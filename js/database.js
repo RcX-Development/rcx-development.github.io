@@ -2,8 +2,8 @@
  * Firebase controls and interactions
  */
 
-import { app, db, initializeFirebase } from "./app.js"
-import { doc, getDoc, updateDoc, deleteField } from "firebase/firestore";
+import { db, initializeFirebase } from "./app.js"
+import { doc, getDoc, updateDoc, deleteField, collection, getDocs } from "firebase/firestore";
 
 export async function getDocList(collectionPath, documentId) {
   if (!db) { await initializeFirebase(); }
@@ -22,6 +22,27 @@ export async function getDocList(collectionPath, documentId) {
     }
   } catch (error) {
     console.error("Error retrieving document values:", error);
+    return [];
+  }
+}
+
+export async function getDocumentIds(collectionPath) {
+  if (!db) { await initializeFirebase(); }
+
+  try {
+    const collectionRef = collection(db, collectionPath);
+    const querySnapshot = await getDocs(collectionRef);
+
+    const documentIds = [];
+
+    querySnapshot.forEach((docSnap) => {
+      documentIds.push(docSnap.id); // The document ID
+    });
+
+    return documentIds;
+
+  } catch (error) {
+    console.error("Error retrieving document IDs:", error);
     return [];
   }
 }

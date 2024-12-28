@@ -212,3 +212,7 @@ li button {
   font-family: "Trebuchet MS", serif;
   transition: scale 0.3s ease;
 }
+
+#card-area {
+  margin-top: 10px;
+}

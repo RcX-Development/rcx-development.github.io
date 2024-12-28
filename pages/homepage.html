@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
-  <link rel="stylesheet" href="css/baseStyle.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/frutiger.css">
+  <link rel="stylesheet" href="../css/baseStyle.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/frutiger.css">
   <meta name="description" content="">
 
   <meta property="og:title" content="">
@@ -24,8 +24,19 @@
   <meta name="theme-color" content="#fafafa">
 </head>
 
-<body onload="initializeFirebase(); checkAuth()">
-  <p> Homepage go here </p>
+<body onload="initializeFirebase(); checkAuth(); loadCharacters()">
+  <ul class="menu-bar-air">
+    <li><button onclick="window.location.href = '../pages/characterCreate.html'">New Character</button></li>
+    <li><button onclick="window.location.href = '../pages/customTypes.html'">Custom Types</button></li>
+    <li class="logo"><span class="logoText" onclick="window.location.href = '../pages/homepage.html'">RcX Development</span></li>
+  </ul>
+
+  <div id="card-area">
+    <div class="card" style="text-align: center; margin-bottom: 5px">
+      <span class="title hover-text" style="text-align: center; width: 100%"> Characters </span>
+      <ul class="no-show" id="character-list"></ul>
+    </div>
+  </div>
 
   <script src="../dist/app.bundle.js" type="module"></script>
   <script src="../dist/homepage.bundle.js" type="module"></script>

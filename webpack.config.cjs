@@ -7,7 +7,7 @@ module.exports = {
     cookie: './js/cookie.js',
     customTypes: './js/customTypes.js',
     database: './js/database.js',
-    homepage: './js/loginPage.js',
+    homepage: './js/homepage.js',
     loginPage: './js/loginPage.js'
   },
   output: {
