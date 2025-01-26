@@ -1,83 +1,252 @@
-<!doctype html>
-<html class="no-js" lang="">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/frutiger.css">
-  <meta name="description" content="">
-
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
-
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="../icon.png">
-
-  <link rel="manifest" href="../site.webmanifest">
-  <meta name="theme-color" content="#fafafa">
-</head>
-
-<body onload="
-  loadRaces()
-">
-  <div class="form-container-air">
-    <form class="card">
-      <span class="title">Character Details</span><hr>
-
-      <div class="form-group-air">
-        <label for="name_input" style="vertical-align: center">Name: </label>
-        <input type="text" id="name_input"><br>
+<!-- Character Creation Card -->
+<div class="center-flex">
+  <div class="window" style="padding: 10px; width: 35%; min-width: 500px;">
+    <!--  Title  -->
+    <div style="display: flex; flex-direction: row">
+      <span class="title" style="flex-grow: 1"> Character Details </span>
+      <div style="justify-self: flex-end; align-self: center">
+        <input type="checkbox" id="override-checkbox">
+        <label for="override-checkbox">Override Input Rules</label>
+        <span data-toggle="tooltip" title="Allows for blank input fields to be submitted"
+              class="no-caret" style="margin-left: 3px">ⓘ</span>
       </div>
+    </div>
+    <hr class="heavy">
 
-      <div class="form-group-air">
-        <label for="nickname_input">Nickname: </label>
-        <input type="text" id="nickname_input">
+    <!--  Name  -->
+    <label for="name_input" style="font-weight: bold">Name : </label>
+    <div class="warn"><input type="text" id="name_input" class="simple-input"></div>
+
+    <!--  Nickname  -->
+    <label for="nickname_input" style="font-weight: bold">Nickname : </label>
+    <input type="text" id="nickname_input" class="simple-input">
+
+    <!--  Gender -->
+    <span class="section">Physical Characteristics</span><hr class="medium">
+    <label for="gender_select" style="font-weight: bold">Gender: </label>
+    <div style="display: flex">
+      <select name="Gender" id="gender_select" class="simple-input">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="other_gender" class="other simple-input"><br>
+    </div>
+
+    <!--  Age  -->
+    <div style="margin-bottom: 10px">
+      <label for="age_input" style="font-weight: bold">Age: </label>
+      <input type="number" id="age_input" class="simple-input">
+    </div>
+
+    <!--  Weight  -->
+    <label for="weight_input" style="font-weight: bold">Weight: </label>
+    <div style="display: flex">
+      <input type="number" id="weight_input" class="simple-input">
+      <label style="font-weight: bold; font-size: 1.2em; margin: 5px">lbs.</label>
+    </div>
+
+    <!--  Height  -->
+    <label for="height_container" style="font-weight: bold">Height: </label>
+    <div id="height_container" style="display: flex">
+      <input type="number" id="height_input_ft" class="simple-input">
+      <label style="font-weight: bold; font-size: 1.2em; margin: 5px 10px 5px 5px;">ft</label>
+      <input type="number" id="height_input_in" class="simple-input">
+      <label style="font-weight: bold; font-size: 1.2em; margin: 5px">in</label>
+    </div>
+
+    <!--  Race  -->
+    <label for="race_select" style="font-weight: bold">Race: </label>
+    <div style="display: flex">
+      <select id="race_select" class="simple-input" disabled="true"></select>
+      <input type="text" id="other_race" class="other simple-input">
+    </div>
+
+    <!--  Skin Color  -->
+    <div style="display: flex" class="swatch_container">
+      <label for="skin_color_btn" style="font-weight: bold">Skin Color: </label>
+      <div id="skin_color_container" class="swatch_container">
+        <button class="swatch clear-style" style="margin-left: 5px" id="skin_color_btn"></button>
+        <div id="skin_color_swatch" class="swatch_panel" style="display: none; left: 5px">
+        </div>
       </div>
+    </div>
 
-      <span class="big-section"><br><br>Physical Characteristics</span><hr>
+    <!--  Religion  -->
+    <span class="section">General Characteristics</span><hr class="medium">
+    <label for="religion_select" style="font-weight: bold">Religion: </label>
+    <div style="display: flex">
+      <select id="religion_select" class="simple-input" disabled="true"></select>
+      <input type="text" id="other_religion" class="other simple-input">
+    </div>
 
-      <div class="form-group-air">
-        <label for="gender_select">Gender: </label>
-        <select name="Gender" id="gender_select">
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        <input type="text" id="other_gender" class="other"><br>
+    <!--  Personality Traits  -->
+    <label for="personality-traits-input">Personality Traits</label>
+    <div style="display: flex">
+      <textarea id="personality-traits-input" rows="5" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  World View  -->
+    <label for="world-view-input">World View</label>
+    <div style="display: flex">
+      <textarea id="world-view-input" rows="5" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Education  -->
+    <label for="education-input">Education</label>
+    <div style="display: flex">
+      <textarea id="education-input" rows="3" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Body Language  -->
+    <label for="body-language-input">Body Language</label>
+    <div style="display: flex">
+      <textarea id="body-language-input" rows="5" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Vocal Accents  -->
+    <div style="margin-bottom: 10px">
+      <label for="vocal-accent-input">Vocal Accent</label>
+      <input type="text" id="vocal-accent-input" class="simple-input">
+    </div>
+
+    <!--  Relationships  -->
+    <label for="relationships-input">Relationships</label>
+    <div style="display: flex">
+      <textarea id="relationships-input" rows="5" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Strengths  -->
+    <label>Strengths</label>
+    <div class="sunken-panel" style="background-color: #c0c0c0; margin-bottom: 10px">
+      <ul id="strength-list"></ul>
+      <div style="display: flex; gap: 5px; margin: 5px">
+        <button class="square" id="add-strength" style="font-size: 1.5em">+</button>
+        <input type="text" class="simple-input" id="strength-text">
+        <button class="square" id="strength-lock">
+          <span class="material-icons" style="font-size: 14px" id="strength-lock-icon">lock_open</span>
+        </button>
       </div>
+    </div>
 
-      <div class="form-group-air">
-        <label for="age_input">Age: </label>
-        <input type="number" id="age_input"><br>
+    <!--  Flaws  -->
+    <label>Flaws</label>
+    <div class="sunken-panel" style="background-color: #c0c0c0; margin-bottom: 10px">
+      <ul id="flaw-list"></ul>
+      <div style="display: flex; gap: 5px; margin: 5px">
+        <button class="square" id="add-flaw" style="font-size: 1.5em">+</button>
+        <input type="text" class="simple-input" id="flaw-text">
+        <button class="square" id="flaw-lock">
+          <span class="material-icons" style="font-size: 14px" id="flaw-lock-icon">lock_open</span>
+        </button>
       </div>
+    </div>
 
-      <div class="form-group-air">
-        <label for="weight_input">Weight: </label>
-        <input type="number" id="weight_input"><br>
+    <!--  Natural Skills  -->
+    <label>Natural Skills</label>
+    <div class="sunken-panel" style="background-color: #c0c0c0; margin-bottom: 10px">
+      <ul id="natural-skill-list"></ul>
+      <div style="display: flex; gap: 5px; margin: 5px">
+        <button class="square" id="add-natural-skill" style="font-size: 1.5em">+</button>
+        <input type="text" class="simple-input" id="natural-skill-text">
+        <button class="square" id="natural-skill-lock">
+          <span class="material-icons" style="font-size: 14px" id="natural-skill-lock-icon">lock_open</span>
+        </button>
       </div>
+    </div>
 
-      <div class="form-group-air">
-        <label for="height_input">Height: </label>
-        <input type="number" id="height_input"><br>
+    <!--  Powers  -->
+    <label>Powers</label>
+    <div class="sunken-panel" style="background-color: #c0c0c0; margin-bottom: 10px">
+      <ul id="power-list"></ul>
+      <div style="display: flex; gap: 5px; margin: 5px">
+        <button class="square" id="add-power" style="font-size: 1.5em">+</button>
+        <input type="text" class="simple-input" id="power-text">
+        <button class="square" id="power-lock">
+          <span class="material-icons" style="font-size: 14px" id="power-lock-icon">lock_open</span>
+        </button>
       </div>
+    </div>
 
-      <div class="form-group-air">
-        <label for="race_select">Race: </label>
-        <select id="race_select"></select>
-        <input type="text" id="other_race" class="other"><br>
+    <!--  Equipment  -->
+    <label>Equipment</label>
+    <div class="sunken-panel" style="background-color: #c0c0c0; margin-bottom: 10px">
+      <ul id="equipment-list"></ul>
+      <div style="display: flex; gap: 5px; margin: 5px">
+        <button class="square" id="add-equipment" style="font-size: 1.5em">+</button>
+        <input type="text" class="simple-input" id="equipment-text">
+        <button class="square" id="equipment-lock">
+          <span class="material-icons" style="font-size: 14px" id="equipment-lock-icon">lock_open</span>
+        </button>
       </div>
+    </div>
 
-      <span class="big-section"><br><br>General Characteristics</span><hr>
-    </form>
+    <!--  Rare Equipment  -->
+    <label>Rare Equipment</label>
+    <div class="sunken-panel" style="background-color: #c0c0c0; margin-bottom: 10px">
+      <ul id="rare-equipment-list"></ul>
+      <div style="display: flex; gap: 5px; margin: 5px">
+        <button class="square" id="add-rare-equipment" style="font-size: 1.5em">+</button>
+        <input type="text" class="simple-input" id="rare-equipment-text">
+        <button class="square" id="rare-equipment-lock">
+          <span class="material-icons" style="font-size: 14px" id="rare-equipment-lock-icon">lock_open</span>
+        </button>
+      </div>
+    </div>
+
+    <!--  Signature Moves  -->
+    <label>Signature Moves</label>
+    <div class="sunken-panel" style="background-color: #c0c0c0; margin-bottom: 10px">
+      <ul id="signature-move-list"></ul>
+      <div style="display: flex; gap: 5px; margin: 5px">
+        <button class="square" id="add-signature-move" style="font-size: 1.5em">+</button>
+        <input type="text" class="simple-input" id="signature-move-text">
+        <button class="square" id="signature-move-lock">
+          <span class="material-icons" style="font-size: 14px" id="signature-move-lock-icon">lock_open</span>
+        </button>
+      </div>
+    </div>
+
+    <!--  Quirk  -->
+    <label for="quirk-input">Quirk</label>
+    <div style="display: flex">
+      <textarea id="quirk-input" rows="5" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Personal Goal  -->
+    <label for="personal-goal-input">Personal Goal</label>
+    <div style="display: flex">
+      <textarea id="personal-goal-input" rows="5" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Basic Summary  -->
+    <label for="basic-summary-input">Basic Summary</label>
+    <div style="display: flex">
+      <textarea id="basic-summary-input" rows="7" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Backstory  -->
+    <label for="backstory-input">Backstory</label>
+    <div style="display: flex">
+      <textarea id="backstory-input" rows="7" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Major Developments  -->
+    <label for="major-developments-input">Major Developments</label>
+    <div style="display: flex">
+      <textarea id="major-developments-input" rows="5" class="simple-textarea"></textarea>
+    </div>
+
+    <!--  Introduction  -->
+    <label for="introduction-input">Introduction</label>
+    <div style="display: flex">
+      <textarea id="introduction-input" rows="7" class="simple-textarea"></textarea>
+    </div>
+
+    <button type="submit" id="cc-submit" class="default" style="width: 100%; font-weight: bold"> Create </button>
+
+    <div style="text-align: center; margin-top: 10px; display: none" id="form-status">
+      <span style="color: #c92e2e; font-weight: bold; font-size: 1em"></span>
+    </div>
   </div>
-
-  <script src="../dist/characterCreate.bundle.js" type="module"></script>
-</body>
-
-</html>
+</div>

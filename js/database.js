@@ -2,8 +2,8 @@
  * Firebase controls and interactions
  */
 
-import { db, initializeFirebase } from "./app.js"
-import { doc, getDoc, updateDoc, deleteField, collection, getDocs } from "firebase/firestore";
+import { db, displayError, initializeFirebase } from "./app.js"
+import { doc, getDoc, setDoc, updateDoc, deleteField, collection, getDocs } from "firebase/firestore";
 
 export async function getDocList(collectionPath, documentId) {
   if (!db) { await initializeFirebase(); }
@@ -90,5 +90,29 @@ export async function removeField(collectionPath, documentId, fieldName) {
     console.log(`Field '${fieldName}' removed successfully.`);
   } catch (error) {
     console.error(`Error removing field '${fieldName}':`, error);
+  }
+}
+
+export async function getCustomType(type, fallback) {
+  return await getDocList("types", type)
+    .then((elements) => {
+      if (elements.length === 0) { throw new Error(`No elements found for type: ${type}`); }
+      return elements;
+    })
+    .catch((error) => {
+      displayError("Error connecting to database, try logging in again or refreshing the page", 0);
+      console.error(`${error.message}\nUsing fallback ${type}s!`);
+      return fallback; // Return fallback to ensure the function always resolves with a value.
+    });
+}
+
+export async function createCharacter(name, data) {
+  try {
+    const docRef = doc(db, "characters", name);
+    await setDoc(docRef , data);
+    return true;
+  } catch(e) {
+    console.error(e);
+    return false;
   }
 }

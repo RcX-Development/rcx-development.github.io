@@ -25,6 +25,7 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "firebase": "^11.1.0",
-    "path-browserify": "^1.0.1"
+    "path-browserify": "^1.0.1",
+    "vanilla-picker": "^2.12.3"
   }
 }

@@ -7,7 +7,9 @@
   <title></title>
   <link rel="stylesheet" href="../css/baseStyle.css">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/frutiger.css">
+  <link rel="stylesheet" href="../css/devStyle.css">
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="description" content="">
 
   <meta property="og:title" content="">
@@ -20,26 +22,41 @@
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
 
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="manifest" href="../site.webmanifest">
   <meta name="theme-color" content="#fafafa">
 </head>
 
-<body onload="initializeFirebase(); checkAuth(); loadCharacters()">
-  <ul class="menu-bar-air">
-    <li><button onclick="window.location.href = '../pages/characterCreate.html'">New Character</button></li>
-    <li><button onclick="window.location.href = '../pages/customTypes.html'">Custom Types</button></li>
-    <li class="logo"><span class="logoText" onclick="window.location.href = '../pages/homepage.html'">RcX Development</span></li>
-  </ul>
+<body onload="initializeFirebase(); checkAuth()">
+<div class="window-body">
 
-  <div id="card-area">
-    <div class="card" style="text-align: center; margin-bottom: 5px">
-      <span class="title hover-text" style="text-align: center; width: 100%"> Characters </span>
-      <ul class="no-show" id="character-list"></ul>
+  <!-- Menu Bar -->
+  <menu role="tablist" tyle="display: flex; justify-content: space-between; padding: 0; list-style: none;">
+    <li role="tab" aria-selected="true" data-tab="overview"><a href="#tabs" class="bold">Overview</a></li>
+    <li role="tab" data-tab="new-character"><a href="#tabs" class="bold">New Character</a></li>
+<!--    <li role="tab" data-tab="custom-types"><a href="#tabs" class="bold">Custom Types</a></li>-->
+    <li role="tab" data-tab="dev-testing"><a href="#tabs" class="bold">Development Testing</a></li>
+    <li role="tab" data-tab="overview" aria-disabled="true" style="margin-left: auto; pointer-events: none"><a class="logo">RcX Development</a></li>
+  </menu>
+
+  <!-- Content Pane -->
+  <div class="window" role="tabpanel">
+    <div class="window-body" id="content-pane">
+      <!-- Loads Initially from ../pages/overview.html -->
     </div>
   </div>
 
+  <!-- Alert Display -->
+  <!-- TODO : Add dismiss button -->
+  <div id="alertBox" style="display: none">
+    <span style="font-weight: bold; font-size: 1.2em"></span>
+  </div>
+</div>
+
   <script src="../dist/app.bundle.js" type="module"></script>
   <script src="../dist/homepage.bundle.js" type="module"></script>
+  <script src="../dist/characterCreate.bundle.js" type="module"></script>
+  <script src="../dist/devTesting.bundle.js" type="module"></script>
+  <!--<script src="../dist/customTypes.bundle.js" type="module"></script>-->
 </body>
 
 </html>

@@ -1,0 +1,34 @@
+.dev-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dev-table {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1.5fr 5fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.clear-surround {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  margin: 0 !important;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  color: black;
+}
+
+.table-div {
+  width: 100%;
+}

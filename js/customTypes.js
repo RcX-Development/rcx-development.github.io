@@ -27,8 +27,8 @@ function loadLists() {
         const buttonWrapper = document.createElement("div");
 
         entryObj.appendChild(document.createTextNode(element[1]));
-        deleteBtn.innerHTML = "<span class='material-symbols-outlined interactable' style='font-size: 1.5em; color: #555555;'>delete</span>";
-        editBtn.innerHTML = "<span class='material-symbols-outlined interactable' style='font-size: 1.5em; color: #555555;'>edit</span>";
+        deleteBtn.innerHTML = "<span class='material-symbols-outlined interactive-scale' style='font-size: 1.5em; color: #555555;'>delete</span>";
+        editBtn.innerHTML = "<span class='material-symbols-outlined interactive-scale' style='font-size: 1.5em; color: #555555;'>edit</span>";
 
         deleteBtn.classList.add("clean-icon");
         editBtn.classList.add("clean-icon");
