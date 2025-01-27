@@ -1,6 +1,8 @@
 import { getDocumentIds } from "./database.js";
 import { CharacterCreate, loadRaces, loadReligions} from "./characterCreate.js";
 import {DevTesting} from "./devTesting.js";
+import {displayError} from "./app.js";
+import {loadCharacters} from "./overview.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll('[role="tab"]');
@@ -14,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const tabOnLoads = {
-    "overview": () => { },
+    "overview": () => { loadCharacters(); },
     "new-character": () => {
       CharacterCreate.init();
       CharacterCreate.loadRaces();
@@ -61,28 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (defaultTab) { defaultTab.querySelector('a').click(); }
 });
 
-export function loadCharacters() {
-  const listObj = document.getElementById("character-list");
-
-  getDocumentIds("characters").then((elements) => {
-    if (!elements || elements.length === 0) {
-      // Display error
-      console.log("Failed to load races!");
-      return;
-    }
-
-    for (let element of elements) {
-      const entryObj = document.createElement("li");
-
-      entryObj.appendChild(document.createTextNode(element));
-      entryObj.classList.add("air-btn");
-
-      listObj.appendChild(entryObj);
-    }
-
-  });
-}
-
 export function changeTab(tabName) {
   const tabs = document.querySelectorAll('[role="tab"]');
 
@@ -95,5 +75,3 @@ export function changeTab(tabName) {
     if (tabKey === tabName) { tab.setAttribute('aria-selected', 'true'); tab.click(); }
   })
 }
-
-window.loadCharacters = loadCharacters;

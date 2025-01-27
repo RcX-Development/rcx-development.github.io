@@ -9,7 +9,8 @@ module.exports = {
     database: './js/database.js',
     homepage: './js/homepage.js',
     loginPage: './js/loginPage.js',
-    devTesting: './js/devTesting.js'
+    devTesting: './js/devTesting.js',
+    overview: './js/overview.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
